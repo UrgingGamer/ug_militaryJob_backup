@@ -36,20 +36,20 @@ function ShowInfo(text)
 end
 
 function playCode99Sound()
-    PlaySoundFrontend(-1, "TIMER_STOP", "HUD_MINI_GAME_SOUNDSET", 1)
+    PlaySoundFrontend(-1, "TIMER_STOP", "HUD_MINI_GAME_SOUNDSET", 0.3)
     Wait(900)
-    PlaySoundFrontend(-1, "TIMER_STOP", "HUD_MINI_GAME_SOUNDSET", 1)
+    PlaySoundFrontend(-1, "TIMER_STOP", "HUD_MINI_GAME_SOUNDSET", 0.3)
     Wait(900)
-    PlaySoundFrontend(-1, "TIMER_STOP", "HUD_MINI_GAME_SOUNDSET", 1)
+    PlaySoundFrontend(-1, "TIMER_STOP", "HUD_MINI_GAME_SOUNDSET", 0.3)
 end
 
-RegisterNetEvent('Fax:ShowInfo')
-AddEventHandler('Fax:ShowInfo', function(notetext)
+RegisterNetEvent('ug_militaryJob_backup:ShowInfo')
+AddEventHandler('ug_militaryJob_backup:ShowInfo', function(notetext)
 	ShowInfo(notetext)
 end)
 
-RegisterNetEvent('Fax:BackupReq')
-AddEventHandler('Fax:BackupReq', function(bk, s, playerName)
+RegisterNetEvent('ug_militaryJob_backup:BackupReq')
+AddEventHandler('ug_militaryJob_backup:BackupReq', function(bk, s, playerName)
     local src = s
     local bkLvl = bk
     local bkLvlTxt = "N/A"
@@ -82,16 +82,16 @@ Citizen.CreateThread(function()
     Citizen.Wait(0)
       if IsControlPressed(0, Config.modifierkey) and IsControlPressed(0, Config.code1key) and PlayerData.job.name == Config.jobname then
         print('help')
-        TriggerServerEvent('Fax:BackupReq', '1')
+        TriggerServerEvent('ug_militaryJob_backup:BackupReq', '1')
       end
       if IsControlPressed(0, Config.modifierkey) and IsControlPressed(0,  Config.code2key) and PlayerData.job.name == Config.jobname then
-        TriggerServerEvent('Fax:BackupReq', '2')
+        TriggerServerEvent('ug_militaryJob_backup:BackupReq', '2')
       end
       if IsControlPressed(0, Config.modifierkey) and IsControlPressed(1,  Config.code3key) and PlayerData.job.name == Config.jobname then
-        TriggerServerEvent('Fax:BackupReq', '3')
+        TriggerServerEvent('ug_militaryJob_backup:BackupReq', '3')
       end
       if IsControlPressed(0, Config.modifierkey) and IsControlPressed(1,  Config.code99key) and PlayerData.job.name == Config.jobname then
-        TriggerServerEvent('Fax:BackupReq', '99')
+        TriggerServerEvent('ug_militaryJob_backup:BackupReq', '99')
       end
   end
 end)
